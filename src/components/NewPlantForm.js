@@ -7,7 +7,7 @@ function NewPlantForm({nameInput, imageInput, priceInput, formSumbitHandle}) {
       <form onSubmit={formSumbitHandle}>
         <input type="text" name="name" placeholder="Plant name" onChange={nameInput} />
         <input type="text" name="image" placeholder="Image URL" onChange={imageInput} />
-        <input type="number" name="price" step="0.01" placeholder="Price" onChange={priceInput} />
+        <input type="number" name="price" min="0.01" max="100.00" step="0.01" placeholder="Price" onChange={priceInput} />
         <button type="submit">Add Plant</button>
       </form>
     </div>

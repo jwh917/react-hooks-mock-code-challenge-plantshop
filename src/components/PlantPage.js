@@ -114,19 +114,33 @@ function PlantPage() {
     setSortHighLow(false)
   }
 
+  function handleDelPlant(deletedPlant){
+    console.log(deletedPlant)
+    const updatedPlants = plants.filter((plant) => plant.id !== deletedPlant.id);
+    setPlants(updatedPlants)
+  }
 
+  function priceSubmitHandle(updatedPlant){
+    console.log(updatedPlant)
 
+    const updatedPlants = plants.map((plant) => {
+      if (plant.id === updatedPlant.id) {
+        return updatedPlant
+      } else {
+        return plant
+      }
+    })
 
+    setPlants(updatedPlants);
 
-
-
+  }
 
   return (
     <main>
       <NewPlantForm nameInput={nameInput} imageInput={imageInput} priceInput={priceInput} formSumbitHandle={formSumbitHandle}/>
       <Search searchHandle={searchHandle}/>
       <SortButtons sortHandleHighLow={sortHandleHighLow} sortHandleLowHigh={sortHandleLowHigh} sortHighLow={sortHighLow} sortLowHigh={sortLowHigh}/>
-      <PlantList plants={searchedPlants} />
+      <PlantList plants={searchedPlants} handleDelPlant={handleDelPlant} priceSubmitHandle={priceSubmitHandle}/>
     </main>
   );
 }
